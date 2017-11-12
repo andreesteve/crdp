@@ -139,7 +139,7 @@ This is an example of configuration file:
      _u=lab
      _d=example
      # configures the gateway password to be the same as the password used for the connection
-     _gp=$password
+     _gp=\$password
 
      # configuration to connect to mom's pc
      [moms]
@@ -155,7 +155,7 @@ Would yield this RDP call:
 
 <PASSWORD> will be the value that is prompted to the user (or retrieved from the keychain).
 
-Note that the property '_gp=$password' uses the special variable $password. This tells $0 to use the same password on the connection
+Note that the property '_gp=\$password' uses the special variable \$password. This tells $0 to use the same password on the connection
 for the gateway authentication.
 
 Note that because '_u' was redifined on the [officepc] section, it takes precedence over the value under the [general] section.
