@@ -1,5 +1,4 @@
-#_CONFIG_PATH=~/.local/share/crdp.cfg
-_CONFIG_PATH=crdp.cfg
+_CONFIG_PATH=~/.local/share/crdp.cfg
 CONFIG_PATH=$(realpath $_CONFIG_PATH)
 CONFIG_DIR=$(dirname $CONFIG_PATH)
 VERSION=0.0.1
@@ -11,6 +10,7 @@ declare -A ACTIONS_HELP
 
 # source functions
 . cfg.sh
+. connect.sh
 
 # parse options and put command into $COMMAND and arguments into $*
 . args.sh
@@ -19,7 +19,7 @@ declare -A ACTIONS_HELP
 cfg-create-file
 
 # parses the general config section
-cfg-read-section general
+#cfg-read-section general
 
 # grap function that operates on that command
 action=${ACTIONS[$COMMAND]}
