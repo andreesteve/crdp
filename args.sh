@@ -51,7 +51,7 @@ fi
 
 # using : means that option has a value (e.g. --verbosity 2)
 ARGS_OPTIONS=
-ARGS_LONGOPTIONS=prompt,args:
+ARGS_LONGOPTIONS=prompt,args:,show
 
 # -temporarily store output to be able to check for errors
 # -e.g. use “--options” parameter by name to activate quoting/enhanced mode
@@ -85,6 +85,11 @@ while true; do
              PROMPT=1
              shift
              ;;
+        --show)
+            SHOW=1
+            shift
+            ;;
+        
         --)
             shift
             break

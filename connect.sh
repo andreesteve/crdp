@@ -91,20 +91,26 @@ function connect {
     [[ -z $rdpclient ]] &&
         { "rdp client is not defined. Make sure you have 'rdpclient' property defined in your configuration file."; exit 1; }
 
+    local exec_cmd="$rdpclient $args ${vals[additional_args]} $ADD_ARGS"
+    
+    # if prompted to show
+    [[ $SHOW -eq 1 ]] && echo $exec_cmd
+    
     # runs it
-    $rdpclient $args ${vals[additional_args]} $ADD_ARGS
+    $exec_cmd
     
     # exit with error code from rdpclient
     exit $?
 }
 
 function connect-help {
-    echo "usage: $0 connect <hostname> [--prompt]
+    echo "usage: $0 connect <hostname> [--prompt] [--show] [--args]
 
 Connects to the remote desktop with name <hostname>. If <hostname> is a section on the configuration file
 the configuration values under that section are used to control the connect behavior.
 
     --prompt can be used to force prompting for passwords, if keyring is being used and the password needs to be changed.
+    --show can be used to print to stdout the connection command that will be executed (passwords may be printed)
     --args can be used to pass additional arguments to the RDP client CLI
 
 You can add <hostname> name to your $0.cfg to save your preferences for this connection.
