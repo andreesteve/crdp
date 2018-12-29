@@ -21,6 +21,7 @@ declare -A ACTIONS_HELP
 # source functions
 . $DIR/cfg.sh
 . $DIR/connect.sh
+. $DIR/list.sh
 
 # parse options and put command into $COMMAND and arguments into $*
 . $DIR/args.sh

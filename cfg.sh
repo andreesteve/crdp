@@ -51,3 +51,11 @@ function cfg-read-section {
         grep -v '#' |                                            # skip comments
         sed 's/\([^=]\+\)=\?\(.*\)$/[\1]="\2"/' | tr '\n' ' '    # puts it back on a single string on the associate array format
 }
+
+# reads the name of sections
+# return a string space separated of section names
+# you can later call other cfg- function passing each section name
+# to get more details
+function cfg-read-section-names {
+    grep -o '^\[.*\]' $CONFIG_PATH | sed -e 's/\[\(.*\)\]/\1/' | tr '\n' ' '
+}
